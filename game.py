@@ -30,6 +30,8 @@ winning_value =guesses[(np.abs(guesses - round(2*np.average(guesses)/3))).argmin
 list_of_winners = []
 
 # Make dir to save our files
+if not os.path.exists(dirpath):
+    os.mkdir(dirpath)
 os.mkdir(dirpath+"/"+time_curr)
 
 # Information about current run:
@@ -39,6 +41,7 @@ for agent in b:
         list_of_winners.append( type(agent).__name__)
         winning_string+=agent.__str__()
         winning_string+="\n"
+ 
 with open(dirpath+"/"+time_curr+'/winners.txt', 'w') as f:
     f.write(winning_string)
 print(winning_string)

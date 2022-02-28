@@ -53,7 +53,14 @@ class SmartNaiveAgent(Agent):
     def __str__(self) -> str:
         return "%d from %s with level %d" % (self.choice, type(self).__name__, self.level)
 
-
+class ZeroLevelThinker(Agent):
+    def __init__(self):
+        self.choice = 0
+        super().__init__()
+    
+    def choose(self) ->int:
+        self.choice = random.randrange(leeway)+66
+        return self.choice
 class FirstLevelThinker(Agent):
     def __init__(self):
         self.choice = 0
